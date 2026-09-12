@@ -13,10 +13,12 @@
   .section { padding: 50px 20px; max-width: 1000px; margin: auto; }
   .section h2 { font-size: 1.8rem; margin-bottom: 20px; border-left: 4px solid #e63946; padding-left: 12px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-  .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; }
-  .card video, .card img { width: 100%; display: block; }
-  .card-info { padding: 15px; }
-  .card-info h3 { font-size: 1.1rem; margin-bottom: 5px; }
+  .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: transform 0.2s ease; }
+  .card:hover { transform: translateY(-5px); }
+  .card video, .card img { width: 100%; display: block; pointer-events: none; }
+  .card-info { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+  .card-info h3 { font-size: 1.1rem; }
+  .card-info span { color: #e63946; font-size: 0.85rem; }
   .services { display: flex; flex-wrap: wrap; gap: 15px; }
   .service-tag { background: #1a1a1a; padding: 10px 18px; border-radius: 30px; font-size: 0.95rem; }
   footer { text-align: center; padding: 40px 20px; color: #888; }
@@ -26,25 +28,25 @@
 <body>
 
 <header>
-  <h1>Your Name</h1>
+  <h1>Parv Ai</h1>
   <p>Video Editor | Reels & Content Creator</p>
 </header>
 
 <div class="section">
   <h2>Portfolio</h2>
   <div class="grid">
-    <div class="card">
-      <video controls src="assets/sample1.mp4"></video>
-      <div class="card-info"><h3>Reel Edit 1</h3></div>
-    </div>
-    <div class="card">
-      <video controls src="assets/sample2.mp4"></video>
-      <div class="card-info"><h3>Reel Edit 2</h3></div>
-    </div>
-    <div class="card">
-      <video controls src="assets/sample3.mp4"></video>
-      <div class="card-info"><h3>Reel Edit 3</h3></div>
-    </div>
+    <a class="card" href="REEL_LINK_1" target="_blank">
+      <video src="assets/sample1.mp4" muted autoplay loop playsinline></video>
+      <div class="card-info"><h3>Reel Edit 1</h3><span>View on Instagram →</span></div>
+    </a>
+    <a class="card" href="REEL_LINK_2" target="_blank">
+      <video src="assets/sample2.mp4" muted autoplay loop playsinline></video>
+      <div class="card-info"><h3>Reel Edit 2</h3><span>View on Instagram →</span></div>
+    </a>
+    <a class="card" href="REEL_LINK_3" target="_blank">
+      <video src="assets/sample3.mp4" muted autoplay loop playsinline></video>
+      <div class="card-info"><h3>Reel Edit 3</h3><span>View on Instagram →</span></div>
+    </a>
   </div>
 </div>
 
@@ -61,8 +63,8 @@
 
 <footer>
   <p>Contact me</p>
-  <a href="https://instagram.com/yourusername" target="_blank">Instagram</a>
-  <a href="mailto:youremail@example.com">Email</a>
+  <a href="https://www.instagram.com/_parv_ai_?stkn=MWE3dHIzMzk0Zm9pbw==" target="_blank">Instagram</a>
+  <a href="mailto:parvkumarpatel2010@gmail.com">Email</a>
 </footer>
 
 </body>
