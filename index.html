@@ -4,52 +4,133 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parv Ai — Video Editor Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', sans-serif; background: #0d0d0d; color: #fff; }
+:root{--bg:#09090b;--surface:#141417;--line:rgba(255,255,255,.08);--txt:#f4f4f5;--mut:#9b9ba6;--red:#8b5cf6;--red2:#b79bff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:Inter,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Outfit,'Segoe UI',sans-serif;font-weight:700}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red2);outline-offset:3px}
 
-  header { text-align: center; padding: 50px 20px 30px; background: linear-gradient(135deg, #1f1f1f, #000); }
-  .profile-pic { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid #e63946; margin-bottom: 15px; }
-  header h1 { font-size: 2rem; letter-spacing: 2px; }
-  header p { color: #aaa; margin-top: 8px; font-size: 1rem; }
+/* NAV */
+nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(9,9,11,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-family:Outfit,sans-serif;font-weight:800;font-size:1.15rem;text-decoration:none}
+.brand span{color:var(--red)}
+nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+nav ul a{color:var(--mut);text-decoration:none;font-size:.88rem}
+nav ul a:hover{color:#fff}
+.nav-cta{background:var(--red);color:#fff!important;padding:7px 16px;border-radius:30px;font-weight:600}
+@media(max-width:600px){nav ul li:not(:last-child){display:none}}
 
-  .section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-  .section h2 { font-size: 1.8rem; margin-bottom: 20px; border-left: 4px solid #e63946; padding-left: 12px; }
+/* HERO */
+header{position:relative;text-align:center;padding:80px 22px 64px;overflow:hidden}
+header::before{content:"";position:absolute;left:50%;top:-140px;width:620px;height:620px;transform:translateX(-50%);background:radial-gradient(circle,rgba(139,92,246,.28),transparent 65%);pointer-events:none}
+.hero-in{position:relative;animation:rise .8s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.ring{width:132px;height:132px;margin:0 auto 22px;padding:4px;border-radius:50%;background:conic-gradient(from 200deg,var(--red),#d9c8ff,var(--red));box-shadow:0 0 50px rgba(139,92,246,.35)}
+.profile-pic{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--bg);display:block}
+header h1{font-size:clamp(2.8rem,9vw,4.6rem);font-weight:800;line-height:1.02;letter-spacing:-1.5px;background:linear-gradient(180deg,#fff,#b9b9c4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{color:var(--red2);font-weight:500;margin-top:10px;letter-spacing:.3px}
+.tag{color:var(--mut);max-width:440px;margin:14px auto 0;font-size:.98rem}
+.hero-btns{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.btn{padding:12px 26px;border-radius:40px;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--line);background:var(--surface);transition:transform .2s,box-shadow .2s}
+.btn.pri{background:linear-gradient(135deg,var(--red),#6d3fd6);border-color:transparent;box-shadow:0 8px 28px rgba(139,92,246,.35)}
+.btn:hover{transform:translateY(-2px)}
 
-  .filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 25px; }
-  .filter-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px 20px; border-radius: 30px; font-size: 0.95rem; cursor: pointer; }
-  .filter-btn.active { background: #e63946; color: #fff; border-color: #e63946; }
+/* SECTIONS */
+.section{padding:56px 22px;max-width:1040px;margin:auto}
+.head{margin-bottom:26px}
+.head h2{font-size:clamp(1.9rem,5vw,2.5rem);font-weight:800;letter-spacing:-.8px;line-height:1.1}
+.head p{color:var(--mut);font-size:.92rem;margin-top:6px}
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-  .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: transform 0.2s ease; aspect-ratio: 9/16; }
-  .card:hover { transform: translateY(-5px); }
-  .card video { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .card-info { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
-  .card-info h3 { font-size: 1.05rem; }
-  .hidden { display: none !important; }
+/* ABOUT */
+.about{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:34px 28px}
+.about p{color:#cfcfd6;font-size:1.02rem;max-width:680px}
+.about p+p{margin-top:14px;color:var(--mut);font-size:.95rem}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pills span{font-size:.85rem;padding:7px 16px;border-radius:30px;border:1px solid rgba(139,92,246,.4);color:var(--red2);background:rgba(139,92,246,.08)}
 
-  .services { display: flex; flex-wrap: wrap; gap: 15px; }
-  .service-tag { background: #1a1a1a; padding: 10px 18px; border-radius: 30px; font-size: 0.95rem; }
+/* FILTERS */
+.filters{display:inline-flex;gap:4px;padding:5px;margin-bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:40px;flex-wrap:wrap}
+.filter-btn{background:transparent;color:var(--mut);border:0;padding:9px 20px;border-radius:30px;font:500 .9rem Inter,sans-serif;cursor:pointer;transition:.2s}
+.filter-btn:hover{color:#fff}
+.filter-btn.active{background:var(--red);color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.4)}
 
-  .testimonials { display: flex; flex-direction: column; gap: 20px; }
-  .testimonial { background: #1a1a1a; padding: 20px; border-radius: 10px; border-left: 4px solid #e63946; }
-  .testimonial-name { font-weight: bold; color: #e63946; margin-top: 10px; }
-  .testimonial-text { color: #aaa; line-height: 1.6; }
+/* VIDEO GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.5);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.card video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+.card[data-category="long"]{grid-column:1/-1}
+.card[data-category="long"] video{aspect-ratio:16/9}
+.card-info{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
+.card-info h3{font-size:1.02rem;font-weight:600}
+.badge{font-size:.72rem;color:var(--red2);border:1px solid rgba(139,92,246,.4);padding:2px 10px;border-radius:20px}
+.hidden{display:none!important}
 
-  footer { text-align: center; padding: 40px 20px; color: #888; }
-  footer a { color: #e63946; text-decoration: none; margin: 0 10px; }
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.service-tag{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.service-tag::before{content:"";display:block;width:34px;height:4px;border-radius:4px;background:var(--red);margin-bottom:16px}
+.service-tag b{display:block;font:700 1.12rem Outfit,sans-serif;margin-bottom:6px}
+.service-tag span{color:var(--mut);font-size:.88rem}
+
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.testimonial{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.testimonial::before{content:"\201C";position:absolute;top:6px;right:20px;font:800 4.5rem Outfit,sans-serif;color:rgba(139,92,246,.22);line-height:1}
+.testimonial-text{color:#cfcfd6;font-size:.95rem;position:relative}
+.testimonial-name{font-weight:600;color:var(--red2);font-size:.92rem}
+
+/* CONTACT */
+.cta{text-align:center;background:radial-gradient(circle at 50% 0,rgba(139,92,246,.22),transparent 70%),var(--surface);border:1px solid var(--line);border-radius:26px;padding:56px 22px}
+.cta h2{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;letter-spacing:-.8px}
+.cta p{color:var(--mut);margin:10px auto 26px;max-width:420px}
+footer{text-align:center;padding:36px 20px 44px;color:var(--mut);font-size:.82rem}
+footer a{color:var(--red2);text-decoration:none;margin:0 10px}
+footer a:hover{text-decoration:underline}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<header>
-  <img class="profile-pic" src="New Project 195 [DD59DE9].png" alt="Parv Ai">
-  <h1>Parv Ai</h1>
-  <p>Video Editor | Content Creator</p>
+<nav>
+  <a class="brand" href="#top">Parv <span>Ai</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a class="nav-cta" href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header id="top">
+  <div class="hero-in">
+    <div class="ring"><img class="profile-pic" src="New Project 195 [DD59DE9].png" alt="Parv Ai" width="132" height="132"></div>
+    <h1>Parv Ai</h1>
+    <p class="role">Video Editor | Content Creator</p>
+    <p class="tag">I turn raw clips into reels that hold attention from the first second.</p>
+    <div class="hero-btns">
+      <a class="btn pri" href="#work">View my work</a>
+      <a class="btn" href="#contact">Hire me</a>
+    </div>
+  </div>
 </header>
 
-<div class="section">
-  <h2>Portfolio</h2>
+<div class="section" id="about">
+  <div class="head"><h2>About Me</h2></div>
+  <div class="about">
+    <p>I'm a video editor who helps creators grow. I turn raw footage into videos that boost engagement, increase average view duration and keep your audience entertained from the first second to the last.</p>
+    <p>Every edit I make has one goal: make people watch, enjoy and come back for more. Share your idea and I'll shape it into content that stands out.</p>
+    <div class="pills"><span>More engagement</span><span>Higher watch time</span><span>Entertaining edits</span></div>
+  </div>
+</div>
+
+<div class="section" id="work">
+  <div class="head"><h2>Portfolio</h2><p>Tap a video to play it.</p></div>
 
   <div class="filters">
     <button class="filter-btn active" data-category="reel">Reel Type</button>
@@ -59,37 +140,36 @@
 
   <div class="grid" id="grid">
     <div class="card" data-category="reel">
-      <video src="Edit By Parv Ai Before-After [0C996F8].mp4" controls playsinline></video>
-      <div class="card-info"><h3>Reel Edit 1</h3></div>
+      <video src="Edit By Parv Ai Before-After [0C996F8].mp4" controls playsinline preload="metadata"></video>
+      <div class="card-info"><h3>Reel Edit 1</h3><span class="badge">Reel</span></div>
     </div>
     <div class="card" data-category="reel">
-      <video src="Before-After 2 [4E7202A].mp4" controls playsinline></video>
-      <div class="card-info"><h3>Reel Edit 2</h3></div>
+      <video src="Before-After 2 [4E7202A].mp4" controls playsinline preload="metadata"></video>
+      <div class="card-info"><h3>Reel Edit 2</h3><span class="badge">Reel</span></div>
     </div>
     <div class="card" data-category="shorts">
-      <video src="Full Video By Parv [1E6897B].mp4" controls playsinline></video>
-      <div class="card-info"><h3>Shorts Edit 1</h3></div>
+      <video src="Full Video By Parv [1E6897B].mp4" controls playsinline preload="metadata"></video>
+      <div class="card-info"><h3>Shorts Edit 1</h3><span class="badge">Shorts</span></div>
     </div>
     <div class="card" data-category="long">
-      <video src="assets/sample3.mp4" controls playsinline></video>
-      <div class="card-info"><h3>Long Form Edit 1</h3></div>
+      <video src="assets/sample3.mp4" controls playsinline preload="metadata"></video>
+      <div class="card-info"><h3>Long Form Edit 1</h3><span class="badge">Long form</span></div>
     </div>
   </div>
 </div>
 
-<div class="section">
-  <h2>Services</h2>
+<div class="section" id="services">
+  <div class="head"><h2>Services</h2><p>What I can do for your content.</p></div>
   <div class="services">
-    <span class="service-tag">Reels Editing</span>
-    <span class="service-tag">Color Grading</span>
-    <span class="service-tag">Transitions</span>
-    <span class="service-tag">Motion Graphics</span>
-    
+    <div class="service-tag"><b>Reels Editing</b><span>Fast cuts, captions and sound that keep people watching.</span></div>
+    <div class="service-tag"><b>Color Grading</b><span>Clean, consistent color that makes your footage look pro.</span></div>
+    <div class="service-tag"><b>Transitions</b><span>Smooth transitions that flow with the beat.</span></div>
+    <div class="service-tag"><b>Motion Graphics</b><span>Animated text and effects that make edits stand out.</span></div>
   </div>
 </div>
 
-<div class="section">
-  <h2>Testimonials</h2>
+<div class="section" id="reviews">
+  <div class="head"><h2>Testimonials</h2><p>What clients say about working with me.</p></div>
   <div class="testimonials">
     <div class="testimonial">
       <div class="testimonial-text">"Parv's editing skills are exceptional. My reels got way more engagement after his edits. Highly recommended!"</div>
@@ -97,7 +177,7 @@
     </div>
     <div class="testimonial">
       <div class="testimonial-text">"Professional, creative, and super quick with turnarounds. Best video editor I've worked with."</div>
-      <div class="testimonial-name">— khushal Sharma </div>
+      <div class="testimonial-name">— khushal Sharma</div>
     </div>
     <div class="testimonial">
       <div class="testimonial-text">"The color grading and transitions Parv added completely transformed my content. Worth every penny!"</div>
@@ -106,29 +186,45 @@
   </div>
 </div>
 
+<div class="section" id="contact">
+  <div class="cta">
+    <h2>Let's edit something great</h2>
+    <p>Send me your idea or raw footage and I'll get back to you.</p>
+    <div class="hero-btns">
+      <a class="btn pri" href="mailto:parvkumarpatel2010@gmail.com">Email me</a>
+      <a class="btn" href="https://www.instagram.com/_parv_ai_?stkn=MWE3dHIzMzk0Zm9pbw==" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
 <footer>
-  <p>Contact me</p>
-  <a href="https://www.instagram.com/_parv_ai_?stkn=MWE3dHIzMzk0Zm9pbw==" target="_blank">Instagram</a>
-  <a href="mailto: parvkumarpatel2010@gmail.com">Email</a>
+  <p>© 2026 Parv Ai</p>
+  <p style="margin-top:6px">
+    <a href="https://www.instagram.com/_parv_ai_?stkn=MWE3dHIzMzk0Zm9pbw==" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:parvkumarpatel2010@gmail.com">Email</a>
+  </p>
 </footer>
 
 <script>
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.card');
+  const videos = document.querySelectorAll('.card video');
 
   function applyFilter() {
     const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
-
-    cards.forEach(card => {
-      const cardCategory = card.dataset.category;
-      card.classList.toggle('hidden', cardCategory !== activeCategory);
-    });
+    cards.forEach(card => card.classList.toggle('hidden', card.dataset.category !== activeCategory));
+    videos.forEach(v => v.pause());
   }
 
   filterBtns.forEach(btn => btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     applyFilter();
+  }));
+
+  // only one video plays at a time
+  videos.forEach(v => v.addEventListener('play', () => {
+    videos.forEach(o => { if (o !== v) o.pause(); });
   }));
 
   applyFilter();
