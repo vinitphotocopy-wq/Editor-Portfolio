@@ -43,8 +43,7 @@ header{position:relative;min-height:680px;display:flex;align-items:center;justif
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:8px 15px;border:1px solid rgba(139,92,246,.25);border-radius:999px;background:rgba(139,92,246,.07);color:var(--purple3);font-size:.82rem;font-weight:600}
 .hero-eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--purple2);box-shadow:0 0 12px var(--purple)}
 header h1{font-size:clamp(3.4rem,10vw,6.4rem);line-height:.95;letter-spacing:-3px;font-weight:800;background:linear-gradient(180deg,#fff 10%,#f0eff5 50%,#aaa9b5);-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{margin-top:16px;color:var(--purple3);font-size:1.02rem;font-weight:600}
-.tag{max-width:560px;margin:13px auto 0;color:var(--muted);font-size:1rem}
+.tag{max-width:560px;margin:18px auto 0;color:var(--muted);font-size:1rem}
 .hero-btns{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:11px;margin-top:30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.045);color:#e9e9ee;text-decoration:none;font-size:.9rem;font-weight:600;transition:.22s}
 .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.07)}
@@ -75,13 +74,17 @@ header h1{font-size:clamp(3.4rem,10vw,6.4rem);line-height:.95;letter-spacing:-3p
 .card-info h3{font-size:.98rem;font-weight:600}
 .badge{flex-shrink:0;padding:4px 10px;border:1px solid rgba(139,92,246,.24);border-radius:999px;color:#bba4f0;background:rgba(139,92,246,.06);font-size:.7rem;font-weight:600}
 .hidden{display:none!important}
-.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-.service-tag{position:relative;overflow:hidden;min-height:200px;padding:26px 22px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(145deg,#131318,#0f0f13);transition:.25s}
-.service-tag::before{content:"";display:block;width:32px;height:3px;margin-bottom:22px;border-radius:10px;background:linear-gradient(90deg,#a16cff,#6335d0);box-shadow:0 0 14px rgba(139,92,246,.3)}
-.service-tag::after{content:"";position:absolute;width:100px;height:100px;right:-55px;bottom:-55px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.12),transparent 70%)}
-.service-tag:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.3);background:linear-gradient(145deg,#16161d,#101015)}
-.service-tag b{display:block;margin-bottom:8px;font:700 1.1rem Outfit,sans-serif}
-.service-tag span{color:var(--muted);font-size:.86rem;line-height:1.65}
+.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.work-card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:var(--card);transition:.25s}
+.work-card:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.34);box-shadow:0 25px 55px rgba(0,0,0,.32)}
+.work-thumb{display:block;overflow:hidden;background:#050506}
+.work-thumb img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;transition:transform .4s ease}
+.work-card:hover .work-thumb img{transform:scale(1.04)}
+.work-card[data-type="long"]{grid-column:1/-1}
+.work-card[data-type="long"] .work-thumb img{aspect-ratio:16/9}
+.work-info{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-top:1px solid var(--line)}
+.watch-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 20px;border-radius:11px;background:linear-gradient(135deg,#9a67ff,#713bd7);color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;box-shadow:0 6px 18px rgba(139,92,246,.25);transition:.22s}
+.watch-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(139,92,246,.34)}
 .testimonials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
 .testimonial{position:relative;min-height:215px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;overflow:hidden;padding:26px 23px;border:1px solid var(--line);border-radius:19px;background:var(--card);transition:.25s}
 .testimonial:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.28)}
@@ -99,7 +102,7 @@ footer a{margin:0 9px;color:#9c82d4;text-decoration:none;transition:.2s}
 footer a:hover{color:#fff}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
 .reveal.show{opacity:1;transform:none}
-@media(max-width:900px){.grid,.services{grid-template-columns:repeat(2,minmax(0,1fr))}.testimonials{grid-template-columns:1fr}}
+@media(max-width:900px){.grid,.works{grid-template-columns:repeat(2,minmax(0,1fr))}.testimonials{grid-template-columns:1fr}}
 @media(max-width:650px){
 nav{top:8px;margin-top:8px;width:calc(100% - 18px);min-height:56px;padding:8px 8px 8px 13px;border-radius:15px}
 .brand{font-size:1rem}.brand .brand-mark{width:27px;height:27px;border-radius:8px;font-size:.75rem}
@@ -109,23 +112,21 @@ header{min-height:620px;padding:85px 18px 65px}
 .avatar-wrap{width:118px;height:118px;margin-bottom:23px}
 .hero-eyebrow{font-size:.74rem}
 header h1{font-size:clamp(3.2rem,17vw,4.8rem);letter-spacing:-2px}
-.role{font-size:.92rem}.tag{max-width:360px;font-size:.9rem}
+.tag{max-width:360px;font-size:.9rem}
 .hero-btns{gap:8px}.btn{min-height:46px;padding:11px 19px;font-size:.84rem}
 .section{width:calc(100% - 30px);padding:52px 0}
 .head{margin-bottom:22px}.head h2{font-size:2.1rem}.head p{font-size:.85rem}
 .about{padding:26px 21px;border-radius:18px}.about p{font-size:.93rem}.about p+p{font-size:.86rem}
 .pills{gap:7px}.pills span{padding:7px 12px;font-size:.74rem}
 .filters{width:100%;justify-content:space-between}.filter-btn{flex:1;padding:10px 5px;font-size:.76rem}
-.grid{gap:11px}.card{border-radius:15px}
+.grid,.works{gap:11px}.card,.work-card{border-radius:15px}
 .card-info{min-height:52px;padding:11px 10px}.card-info h3{font-size:.8rem}.badge{padding:3px 8px;font-size:.6rem}
-.services{gap:10px}
-.service-tag{min-height:185px;padding:21px 16px;border-radius:16px}.service-tag::before{margin-bottom:18px}
-.service-tag b{font-size:.95rem}.service-tag span{font-size:.76rem}
+.work-info{padding:11px 10px}.watch-btn{padding:8px 14px;font-size:.78rem}
 .testimonial{min-height:180px;padding:22px 19px}.testimonial-text{font-size:.84rem}.testimonial-name{font-size:.78rem}
 .cta{padding:60px 18px;border-radius:21px}.cta h2{font-size:2.1rem}.cta p{font-size:.85rem}
 footer{width:calc(100% - 30px)}
 }
-@media(max-width:380px){.grid,.services{grid-template-columns:1fr}.service-tag{min-height:auto}.filter-btn{font-size:.7rem}}
+@media(max-width:380px){.grid,.works{grid-template-columns:1fr}.filter-btn{font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
@@ -137,7 +138,6 @@ footer{width:calc(100% - 30px)}
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#services">Services</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a class="nav-cta" href="#contact">Contact</a></li>
   </ul>
@@ -149,7 +149,6 @@ footer{width:calc(100% - 30px)}
     <div class="avatar-wrap"><div class="ring"><img class="profile-pic" src="New Project 195 [DD59DE9].png" alt="Parv Ai" width="132" height="132"></div></div>
     <div class="hero-eyebrow"><i></i>Video Editor &amp; Content Creator</div>
     <h1>Parv Ai</h1>
-    <p class="role">Video Editor | Content Creator</p>
     <p class="tag">I turn raw clips into reels that hold attention from the first second.</p>
     <div class="hero-btns"><a class="btn pri" href="#work">View my work</a><a class="btn" href="#contact">Hire me</a></div>
   </div>
@@ -191,13 +190,22 @@ footer{width:calc(100% - 30px)}
   </div>
 </section>
 
-<section class="section reveal" id="services">
-  <div class="head"><h2>Services</h2><p>What I can do for your content.</p></div>
-  <div class="services">
-    <div class="service-tag"><b>Reels Editing</b><span>Fast cuts, captions and sound that keep people watching.</span></div>
-    <div class="service-tag"><b>Color Grading</b><span>Clean, consistent color that makes your footage look pro.</span></div>
-    <div class="service-tag"><b>Transitions</b><span>Smooth transitions that flow with the beat.</span></div>
-    <div class="service-tag"><b>Motion Graphics</b><span>Animated text and effects that make edits stand out.</span></div>
+<section class="section reveal" id="previous-works">
+  <div class="head"><h2>My Previous Works</h2><p>Tap Watch to see the full video.</p></div>
+  <div class="works">
+
+    <!-- CARD 1 (Reel). Change thumbnail file name and both links (thumbnail link + Watch link). -->
+    <div class="work-card" data-type="reel">
+      <a class="work-thumb" href="https://www.instagram.com/_parv_ai_?stkn=MWE3dHIzMzk0Zm9pbw==" target="_blank" rel="noopener"><img src="thumb1.jpg" alt="Reel thumbnail" loading="lazy"></a>
+      <div class="work-info"><span class="badge">Reel</span><a class="watch-btn" href="https://www.instagram.com/_parv_ai_?stkn=MWE3dHIzMzk0Zm9pbw==" target="_blank" rel="noopener">Watch</a></div>
+    </div>
+
+    <!-- TO ADD MORE: copy the whole card above and paste it here.
+         Reel  -> data-type="reel"   and badge text Reel
+         Shorts -> data-type="shorts" and badge text Shorts
+         Long  -> data-type="long"   and badge text Long form (shows wide 16:9)
+         Then change the thumbnail file name and the two links. -->
+
   </div>
 </section>
 
@@ -254,7 +262,7 @@ footer{width:calc(100% - 30px)}
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.tarif (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
       });
     }, { threshold: 0.08 });
     reveals.forEach(el => io.observe(el));
