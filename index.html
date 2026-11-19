@@ -203,7 +203,30 @@ footer a{padding:5px 2px}
 @media(prefers-reduced-motion:reduce){
   .card,.work-card,.testimonial,.pills span{transition:none!important}
 }
+/* Navbar visibility and swipe fix */
+@media(max-width:650px){
+  nav ul{
+    justify-content:flex-start !important;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    gap:4px;
+  }
 
+  nav ul::-webkit-scrollbar{
+    display:none;
+  }
+
+  nav ul li{
+    flex:0 0 auto;
+  }
+
+  nav ul a{
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
