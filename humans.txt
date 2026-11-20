@@ -1,0 +1,18 @@
+/* TEAM */
+Creator: Parv
+Role: Video Editor & Creative Developer
+Project: Parv Editor Portfolio
+
+/* SITE */
+Name: Parv Editor
+Website: https://vinitphotocopy-wq.github.io/Editor-Portfolio/
+Language: English
+Standards: HTML5, CSS3, JavaScript
+
+/* TECHNOLOGY */
+Hosting: GitHub Pages
+Repository: GitHub
+
+/* COPYRIGHT */
+Copyright: (c) 2026 Parv
+License: All Rights Reserved
