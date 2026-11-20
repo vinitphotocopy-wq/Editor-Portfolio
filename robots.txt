@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://vinitphotocopy-wq.github.io/Editor-Portfolio/sitemap.xml
