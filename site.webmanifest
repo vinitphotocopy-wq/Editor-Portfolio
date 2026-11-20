@@ -1,0 +1,11 @@
+{
+  "name": "Parv Editor",
+  "short_name": "Parv",
+  "description": "Creative Video Editing Portfolio",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0B12",
+  "theme_color": "#0B0B12"
+}
